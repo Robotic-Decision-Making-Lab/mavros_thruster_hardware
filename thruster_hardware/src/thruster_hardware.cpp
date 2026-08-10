@@ -22,9 +22,6 @@
 
 #include <optional>
 
-#include "hardware_interface/types/hardware_interface_type_values.hpp"
-#include "rclcpp/rclcpp.hpp"
-
 namespace thruster_hardware
 {
 
@@ -39,7 +36,7 @@ auto ThrusterHardware::on_init(const hardware_interface::HardwareComponentInterf
   }
 
   // simple helper method to get parameters from an interface
-  auto get_param = [&logger = logger_](
+  auto get_param = [](
                      const std::unordered_map<std::string, std::string> & params,
                      const std::string & param_name) -> std::optional<int> {
     auto it = params.find(param_name);

@@ -1,4 +1,4 @@
-ARG ROS_DISTRO=rolling
+ARG ROS_DISTRO=lyrical
 FROM ros:$ROS_DISTRO-ros-base
 
 ENV DEBIAN_FRONTEND=noninteractive
@@ -61,8 +61,12 @@ RUN sudo apt-get -q update \
     && sudo apt-get clean -y \
     && sudo rm -rf /var/lib/apt/lists/*
 
+# Zed uses the C++ toolchain instead of configuration files like VSCode
+#
+# CMAKE_EXPORT_COMPILE_COMMANDS is cached by CMake, so it stays enabled for
+# all subsequent `colcon build` runs without needing to be passed again
 RUN . "/opt/ros/${ROS_DISTRO}/setup.sh" \
-    && colcon build \
+    && colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
     && echo "source ${USER_WORKSPACE}/install/setup.bash" >> /home/$USERNAME/.bashrc \
     && echo "if [ -f /opt/ros/${ROS_DISTRO}/setup.bash ]; then source /opt/ros/${ROS_DISTRO}/setup.bash; fi" >> /home/$USERNAME/.bashrc
 

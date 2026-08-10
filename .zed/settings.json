@@ -1,0 +1,14 @@
+{
+  "lsp": {
+    "clangd": {
+      "binary": {
+        "arguments": [
+          "--compile-commands-dir=build/thruster_hardware",
+          "--background-index",
+          "--header-insertion=never",
+          "--clang-tidy"
+        ]
+      }
+    }
+  }
+}

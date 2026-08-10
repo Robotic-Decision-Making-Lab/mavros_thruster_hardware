@@ -21,21 +21,15 @@
 #pragma once
 
 #include <memory>
-#include <vector>
 
-#include "hardware_interface/handle.hpp"
-#include "hardware_interface/hardware_info.hpp"
 #include "hardware_interface/system_interface.hpp"
 #include "hardware_interface/types/hardware_interface_return_values.hpp"
 #include "mavros_msgs/msg/override_rc_in.hpp"
 #include "rcl_interfaces/msg/parameter.hpp"
 #include "rcl_interfaces/srv/set_parameters.hpp"
 #include "rclcpp/macros.hpp"
-#include "rclcpp/node.hpp"
 #include "rclcpp/time.hpp"
-#include "rclcpp_lifecycle/node_interfaces/lifecycle_node_interface.hpp"
 #include "rclcpp_lifecycle/state.hpp"
-#include "realtime_tools/realtime_buffer.hpp"
 #include "realtime_tools/realtime_publisher.hpp"
 
 namespace thruster_hardware
@@ -78,7 +72,7 @@ private:
   // maintain a message so that we don't have to allocate one every time we write to the hardware
   mavros_msgs::msg::OverrideRCIn rc_override_msg_;
 
-  // the write loop run regardless of whether or not the hardware is active
+  // the write loop runs regardless of whether or not the hardware is active
   // so we need to keep track of this to ensure that we only send commands when the hardware is active
   bool is_active_{false};
 

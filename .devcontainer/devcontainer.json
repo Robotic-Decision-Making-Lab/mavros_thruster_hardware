@@ -1,8 +1,9 @@
 {
-  "name": "Dev Container",
-  "dockerFile": "Dockerfile",
-  "context": "..",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/home/ubuntu/ws_ros/src/mavros_thruster_hardware,type=bind",
-  "workspaceFolder": "/home/ubuntu/ws_ros/src/mavros_thruster_hardware",
-  "remoteUser": "ubuntu"
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/ubuntu/ws_ros/src/mavros_thruster_hardware,type=bind",
+    "workspaceFolder": "/home/ubuntu/ws_ros/src/mavros_thruster_hardware",
+    "remoteUser": "ubuntu",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "../"
+    }
 }
