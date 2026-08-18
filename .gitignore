@@ -8,3 +8,4 @@ compile_commands.json
 
 # editor
 .vscode/
+.cache/

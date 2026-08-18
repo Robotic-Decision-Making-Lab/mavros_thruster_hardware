@@ -1,4 +1,4 @@
-ARG ROS_DISTRO=lyrical
+ARG ROS_DISTRO=rolling
 FROM ros:$ROS_DISTRO-ros-base
 
 ENV DEBIAN_FRONTEND=noninteractive
